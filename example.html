@@ -12,17 +12,47 @@ body {
     font: normal 12px Verdana, sans-serif;
 }
 
+h2 {
+    margin-bottom: 5px;
+}
+
+textarea, #range {
+    width: 600px;
+    border: solid 1px silver;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+#range {
+    white-space: pre-wrap;
+}
 
 </style>
 </head>
 <body>
 
+<h2> Disable and Enable Text Selection </h2>
 <p> This text is selectable </p>
 
 <p id="not-selectable"> This text is NOT selectable </p>
 
 <p id="enable-selectable"> This text is was not selectable, but we reenabled it </p>
 
+<h2> Select Text </h2>
+<form> 
+<textarea cols="80" rows="10">
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</textarea>
+
+<br />
+
+<h2> Selected Text </h2>
+
+<div id="range">
+
+</div>
+
+</form>
 
 <script>
 $(document).ready(function()
@@ -31,6 +61,24 @@ $(document).ready(function()
 
     $("#enable-selectable").disableUserSelect(); 
     $("#enable-selectable").enableUserSelect(); 
+
+    var textarea = $('textarea');
+    var showSelection = function()
+    {
+        var range = textarea.getRange();
+        var value = textarea.val().substring(range.start, range.end);
+
+        $('#range').text(value);        
+                   
+    };
+
+
+    textarea
+    .setRange(7, 28)
+    .on('select', showSelection);
+
+    showSelection();
+
 
 
 });

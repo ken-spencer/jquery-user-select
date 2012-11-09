@@ -1,6 +1,6 @@
 # jquery-userSelect version 1.0 
 
-Prevents the user from being able to select text / images etc
+Get and set text ranges or prevent users from doing so. 
 
 ## Installation
 
@@ -21,6 +21,14 @@ Include script *after* the jQuery library:
 
     // Re-enable selection
     $("#text-div").enableUserSelect();
+
+    // Get The range of selected text from a textarea
+    var range = $('textarea').getRange();
+    // Log the selected text
+    console.log($('textarea').val().substring(range.start, range.end));
+                
+    // Set text selection for a text area 
+    $('textarea').setRange(7, 28)
 
 ## Authors
     
