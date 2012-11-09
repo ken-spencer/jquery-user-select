@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="EN" class="sb-html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>user Selection Example</title>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="jquery.userSelect.js"></script>
+<style>
+
+body {
+    font: normal 12px Verdana, sans-serif;
+}
+
+
+</style>
+</head>
+<body>
+
+<p> This text is selectable </p>
+
+<p id="not-selectable"> This text is NOT selectable </p>
+
+<p id="enable-selectable"> This text is was not selectable, but we reenabled it </p>
+
+
+<script>
+$(document).ready(function()
+{
+    $("#not-selectable").disableUserSelect(); 
+
+    $("#enable-selectable").disableUserSelect(); 
+    $("#enable-selectable").enableUserSelect(); 
+
+
+});
+</script>
+
+</body>
+</html>
